@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>YASHEL — цветы и шары в Казани (демо)</title>
+<meta name="description" content="Демо-концепт сайта для магазина цветов и шаров YASHEL, Казань. Неофициальная страница.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f3f1e9; --paper:#fbfaf5; --mint:#dde8d8; --accent:#d4848b; --deep:#1e3d2c; --ink:#1b2a21;
+  --muted:#66736a; --leaf:#5f8a5e; --line:rgba(30,61,44,.14);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+
+.demo{background:var(--deep);color:#d9e6d6;font-size:13px;text-align:center;padding:7px 16px;letter-spacing:.02em}
+.demo b{color:#fff}
+
+header{position:sticky;top:0;z-index:40;background:rgba(243,241,233,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.logo{font-family:var(--serif);font-size:28px;font-weight:600;letter-spacing:.14em;color:var(--deep);display:flex;align-items:center;gap:8px}
+.logo svg{width:22px;height:22px}
+.links{display:flex;gap:28px;font-size:14px;font-weight:500}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--deep);transition:width .3s}
+.links a:hover::after{width:100%}
+.nav-r{display:flex;gap:10px;align-items:center}
+.cart-btn{position:relative;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:background .2s}
+.cart-btn:hover{background:var(--mint)}
+.cart-count{position:absolute;top:-4px;right:-4px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;min-width:19px;height:19px;border-radius:10px;display:grid;place-items:center;padding:0 5px;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.cart-count.on{transform:scale(1)}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-deep{background:var(--deep);color:#fff;box-shadow:0 10px 26px -10px rgba(30,61,44,.6)}
+.btn-deep:hover{background:#2a5239}
+.btn-line{border:1px solid var(--deep);color:var(--deep)}
+.btn-line:hover{background:var(--deep);color:#fff}
+.btn-sm{padding:10px 18px;font-size:14px}
+.mx{width:18px;height:18px;flex:none}
+
+.hero{position:relative;padding:70px 0 90px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--leaf);font-weight:700;margin-bottom:18px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,6.4vw,88px);line-height:.98;color:var(--deep);letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:480px;margin:26px 0 34px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.proof{display:flex;gap:26px;margin-top:44px;flex-wrap:wrap}
+.proof div{border-left:1px solid var(--line);padding-left:16px}
+.proof b{display:block;font-family:var(--serif);font-size:34px;font-weight:600;color:var(--deep);line-height:1}
+.proof small{color:var(--muted);font-size:13px}
+.collage{position:relative;height:600px}
+.collage figure{position:absolute;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 60px -30px rgba(20,40,28,.5)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.c-a{inset:0 18% 14% 6%;border-radius:220px 220px var(--r) var(--r)!important}
+.c-b{width:44%;height:42%;right:0;bottom:0;border:8px solid var(--cream)}
+.c-c{width:30%;height:30%;left:-2%;bottom:2%;border:8px solid var(--cream);border-radius:50%!important}
+.bonus{position:absolute;top:30px;right:2%;background:var(--paper);border-radius:18px;padding:14px 18px;box-shadow:0 20px 40px -20px rgba(20,40,28,.4);font-size:13px;max-width:190px;animation:float 5s ease-in-out infinite}
+.bonus b{display:block;color:var(--deep);font-size:22px;font-family:var(--serif)}
+@keyframes float{50%{transform:translateY(-10px)}}
+#petals{position:absolute;inset:0;pointer-events:none;z-index:1}
+.hero .wrap{position:relative;z-index:2}
+
+.marquee{background:var(--deep);color:#dfeadb;overflow:hidden;padding:18px 0;white-space:nowrap}
+.marquee div{display:inline-block;animation:mq 40s linear infinite;font-family:var(--serif);font-size:30px;font-style:italic}
+.marquee span{margin:0 26px}
+.marquee i{font-style:normal;color:var(--accent);margin:0 4px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:100px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px;flex-wrap:wrap}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,4.6vw,60px);line-height:1;color:var(--deep)}
+h2 em{color:var(--accent)}
+.sec-h p{color:var(--muted);max-width:380px}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.chip{padding:10px 18px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:500;transition:all .2s;background:var(--paper)}
+.chip:hover{border-color:var(--deep)}
+.chip.on{background:var(--deep);color:#fff;border-color:var(--deep)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{background:var(--paper);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+.card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -28px rgba(20,40,28,.45)}
+.card.hide{display:none}
+.ph{position:relative;aspect-ratio:4/5;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.card:hover .ph img{transform:scale(1.06)}
+.tag{position:absolute;top:12px;left:12px;background:var(--paper);color:var(--deep);font-size:12px;font-weight:700;padding:5px 11px;border-radius:999px}
+.tag.hot{background:var(--accent);color:#fff}
+.body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body h3{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.1}
+.body p{font-size:13px;color:var(--muted);flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.price{font-weight:700;font-size:18px;color:var(--deep)}
+.add{width:42px;height:42px;border-radius:50%;background:var(--mint);color:var(--deep);font-size:22px;display:grid;place-items:center;transition:background .2s,transform .2s}
+.add:hover{background:var(--deep);color:#fff;transform:rotate(90deg)}
+
+.builder{background:var(--paper)}
+.b-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.b-view{position:sticky;top:100px;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1;background:var(--mint)}
+.b-view img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.b-sum{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(251,250,245,.93);backdrop-filter:blur(10px);border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.b-sum small{display:block;color:var(--muted);font-size:13px}
+.b-sum b{font-family:var(--serif);font-size:38px;color:var(--deep);line-height:1}
+.step{margin-bottom:32px}
+.step h4{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf);margin-bottom:14px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.opt{border:1px solid var(--line);border-radius:16px;padding:14px;text-align:left;transition:all .2s;background:var(--cream)}
+.opt:hover{border-color:var(--deep)}
+.opt.on{border-color:var(--deep);background:var(--deep);color:#fff}
+.opt b{display:block;font-size:15px}
+.opt small{font-size:12px;opacity:.75}
+.count{display:flex;align-items:center;gap:18px}
+.count input{flex:1;accent-color:var(--deep)}
+.count output{font-family:var(--serif);font-size:40px;color:var(--deep);min-width:70px;text-align:right}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--cream);font:inherit;resize:vertical;color:var(--ink)}
+textarea:focus,input:focus{outline:2px solid var(--leaf);outline-offset:1px}
+
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.how div{background:var(--paper);border-radius:var(--r);padding:30px;border:1px solid var(--line)}
+.how i{font-family:var(--serif);font-size:58px;color:var(--accent);line-height:1;font-style:italic}
+.how h3{font-family:var(--serif);font-size:28px;color:var(--deep);margin:10px 0 8px;font-weight:600}
+.how p{color:var(--muted);font-size:15px}
+.pay{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.pay span{background:var(--paper);border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:500}
+
+.band{position:relative;border-radius:32px;overflow:hidden;min-height:420px;display:flex;align-items:center}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,32,22,.88),rgba(14,32,22,.15));z-index:1}
+.band .in{position:relative;z-index:2;padding:56px;color:#fff;max-width:560px}
+.band h2{color:#fff}
+.band p{opacity:.85;margin:16px 0 26px}
+
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.ct-card{background:var(--paper);border-radius:var(--r);padding:36px;border:1px solid var(--line)}
+.ct-card dl{display:grid;grid-template-columns:120px 1fr;gap:14px 10px;margin-top:22px;font-size:15px}
+.ct-card dt{color:var(--muted)}
+.ct-card dd{font-weight:600}
+.map{border-radius:var(--r);overflow:hidden;position:relative;min-height:340px;background:var(--mint)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .pin{position:absolute;left:58%;top:58%;transform:translate(-50%,-100%);text-align:center}
+.map .pin span{display:block;background:var(--deep);color:#fff;font-size:13px;font-weight:600;padding:8px 14px;border-radius:12px;white-space:nowrap;margin-bottom:6px}
+.map .pin i{display:block;width:18px;height:18px;margin:auto;background:var(--accent);border:4px solid #fff;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,132,139,.6)}70%{box-shadow:0 0 0 22px rgba(212,132,139,0)}100%{box-shadow:0 0 0 0 rgba(212,132,139,0)}}
+.map a{position:absolute;right:16px;bottom:16px}
+
+footer{padding:50px 0 110px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+footer .logo{font-size:22px;margin-bottom:10px}
+footer details{margin-top:18px}
+footer summary{cursor:pointer;font-weight:600;color:var(--deep)}
+footer ul{list-style:none;margin-top:10px;columns:2;gap:30px}
+footer li{margin-bottom:5px;break-inside:avoid}
+footer a{text-decoration:underline}
+
+.fab{position:fixed;right:20px;bottom:20px;z-index:50;height:58px;padding:0 22px 0 16px;border-radius:999px;background:var(--deep);color:#fff;display:flex;align-items:center;gap:10px;font-weight:700;box-shadow:0 14px 30px -10px rgba(0,0,0,.45);transition:transform .2s}
+.fab:hover{transform:scale(1.05)}
+.fab .mx{width:26px;height:26px}
+
+.ov{position:fixed;inset:0;background:rgba(14,32,22,.4);z-index:60;opacity:0;pointer-events:none;transition:opacity .3s}
+.ov.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--paper);z-index:61;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dr-h{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+.dr-h h3{font-family:var(--serif);font-size:30px;color:var(--deep);font-weight:500}
+.dr-list{flex:1;overflow:auto;padding:10px 24px}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.ci img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.ci b{display:block;font-size:15px}
+.ci small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line)}
+.empty{color:var(--muted);text-align:center;padding:60px 0}
+.dr-f{padding:20px 24px;border-top:1px solid var(--line)}
+.dr-f .tot{display:flex;justify-content:space-between;font-size:18px;margin-bottom:6px}
+.dr-f .tot b{color:var(--deep)}
+.dr-f .free{font-size:13px;color:var(--leaf);margin-bottom:14px;font-weight:600}
+.dr-f .btn{width:100%;justify-content:center}
+.dr-f .hint{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+.toast{position:fixed;left:50%;top:20px;transform:translate(-50%,-30px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;z-index:70;max-width:calc(100% - 32px);text-align:center;transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .25s}
+.toast.on{transform:translate(-50%,0);opacity:1}
+
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .links{display:none}
+  .hero-grid,.b-grid,.ct-grid{grid-template-columns:1fr}
+  .collage{height:440px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .how{grid-template-columns:1fr}
+  .b-view{position:relative;top:0}
+}
+@media (max-width:560px){
+  .nav-r .btn{display:none}
+  .hero{padding:40px 0 60px}
+  .collage{height:360px}
+  .bonus{display:none}
+  .proof{gap:14px}
+  .proof b{font-size:26px}
+  .proof div{padding-left:10px}
+  .grid{gap:12px}
+  .body{padding:12px}
+  .body h3{font-size:19px}
+  .body p{display:none}
+  section{padding:70px 0}
+  .band .in{padding:32px}
+  .ct-card{padding:24px}
+  .ct-card dl{grid-template-columns:1fr;gap:2px}
+  .ct-card dd{margin-bottom:10px}
+  footer ul{columns:1}
+  .fab span{display:none}
+  .fab{padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="demo">Демо-концепт сайта для <b>YASHEL</b> · неофициальная страница · цены примерные</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c0-7 0-11 7-16-1 8-3 12-7 16zM12 21C12 15 11 11 5 8c0 6 2 10 7 13z"/></svg>YASHEL</a>
+    <nav class="links">
+      <a href="#catalog">Каталог</a>
+      <a href="#builder">Собрать букет</a>
+      <a href="#balloons">Шары</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="nav-r">
+      <button class="cart-btn" id="cartOpen" aria-label="Корзина">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a class="btn btn-deep btn-sm max" data-msg="Здравствуйте! Хочу заказать букет."><svg class="mx" viewBox="0 0 24 24"><use href="#maxi"/></svg>Написать в MAX</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <canvas id="petals"></canvas>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Цветы и шары · Казань</div>
+      <h1>Свежие цветы, <em>живые</em> эмоции</h1>
+      <p class="lead">Авторские букеты, композиции и воздушные шары с доставкой по Казани. Выберите готовый букет или соберите свой, а заказ отправьте нам в MAX в пару кликов.</p>
+      <div class="cta">
+        <a href="#catalog" class="btn btn-deep">Выбрать букет</a>
+        <a href="#builder" class="btn btn-line">Собрать свой</a>
+      </div>
+      <div class="proof">
+        <div><b>4.9 ★</b><small>454 оценки в 2GIS</small></div>
+        <div><b>300</b><small>бонусов на первый заказ</small></div>
+        <div><b>0 ₽</b><small>доставка от 5 000 ₽</small></div>
+      </div>
+    </div>
+    <div class="collage">
+      <figure class="c-a"><img src="img/peonies.webp" alt="Букет розовых пионов"></figure>
+      <figure class="c-b"><img src="img/balloons.webp" alt="Воздушные шары"></figure>
+      <figure class="c-c"><img src="img/rose-macro.webp" alt="Роза крупным планом"></figure>
+      <div class="bonus"><b>+300 бонусов</b>на первый заказ — приветственный подарок</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div>
+  <span>Розы</span><i>✿</i><span>Пионы</span><i>✿</i><span>Тюльпаны</span><i>✿</i><span>Воздушные шары</span><i>✿</i><span>Свадебные букеты</span><i>✿</i><span>Бесплатная доставка от 5 000 ₽</span><i>✿</i>
+  <span>Розы</span><i>✿</i><span>Пионы</span><i>✿</i><span>Тюльпаны</span><i>✿</i><span>Воздушные шары</span><i>✿</i><span>Свадебные букеты</span><i>✿</i><span>Бесплатная доставка от 5 000 ₽</span><i>✿</i>
+</div></div>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <h2>Каталог <em>букетов</em></h2>
+      <p>Нажмите «+», чтобы добавить в корзину. Заказ одним сообщением уйдёт нам в MAX.</p>
+    </div>
+    <div class="chips rv" id="chips">
+      <button class="chip on" data-f="all">Все</button>
+      <button class="chip" data-f="roses">Розы</button>
+      <button class="chip" data-f="peonies">Пионы</button>
+      <button class="chip" data-f="tulips">Тюльпаны</button>
+      <button class="chip" data-f="mix">Сборные</button>
+      <button class="chip" data-f="wedding">Свадебные</button>
+      <button class="chip" data-f="balloons">Шары</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="builder" id="builder">
+  <div class="wrap b-grid">
+    <div class="b-view rv">
+      <img id="bImg" src="img/hero-roses.webp" alt="Ваш букет">
+      <div class="b-sum">
+        <div><small id="bDesc">25 роз · крафт</small><b id="bPrice">0 ₽</b></div>
+        <a class="btn btn-deep" id="bOrder" href="#"><svg class="mx" viewBox="0 0 24 24"><use href="#maxi"/></svg>Заказать</a>
+      </div>
+    </div>
+    <div class="rv">
+      <h2 style="margin-bottom:12px">Соберите <em>свой</em> букет</h2>
+      <p style="color:var(--muted);margin-bottom:36px">Выберите цветы, количество и упаковку. Цена посчитается сразу.</p>
+      <div class="step"><h4>1 · Цветы</h4><div class="opts" id="oFlower"></div></div>
+      <div class="step"><h4>2 · Количество</h4>
+        <div class="count"><input type="range" id="oCount" min="5" max="101" step="2" value="25" aria-label="Количество цветов"><output id="oCountV">25</output></div>
+      </div>
+      <div class="step"><h4>3 · Упаковка</h4><div class="opts" id="oWrap"></div></div>
+      <div class="step"><h4>4 · Дополнительно</h4><div class="opts" id="oExtra"></div></div>
+      <div class="step"><h4>5 · Открытка</h4><textarea id="oNote" rows="2" maxlength="160" placeholder="Например: С днём рождения, мама! Люблю тебя"></textarea></div>
+    </div>
+  </div>
+</section>
+
+<section id="balloons" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="band rv">
+      <img src="img/balloons.webp" alt="Разноцветные воздушные шары">
+      <div class="in">
+        <div class="eyebrow" style="color:#b9d7b4">Шары и оформление</div>
+        <h2>Праздник <em>с шарами</em></h2>
+        <p>Фонтаны из шаров, цифры, арки и оформление залов на дни рождения, выписки и свадьбы. Пришлите дату и идею, мы предложим варианты и посчитаем стоимость.</p>
+        <a class="btn btn-deep max" data-msg="Здравствуйте! Интересует оформление шарами.">Обсудить в MAX</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="delivery">
+  <div class="wrap">
+    <div class="sec-h rv"><h2>Как мы <em>работаем</em></h2><p>Свежие цветы, аккуратная сборка и фото букета перед отправкой.</p></div>
+    <div class="how">
+      <div class="rv"><i>01</i><h3>Выбираете</h3><p>Готовый букет из каталога или свой в конструкторе. Если сомневаетесь, подскажем в MAX.</p></div>
+      <div class="rv"><i>02</i><h3>Подтверждаем</h3><p>Присылаем фото готового букета, согласуем время и адрес. На первый заказ дарим 300 бонусов.</p></div>
+      <div class="rv"><i>03</i><h3>Доставляем</h3><p>Привозим по Казани, при заказе от 5 000 ₽ доставка бесплатная. Самовывоз из ЖК «Ривьера».</p></div>
+    </div>
+    <div class="pay rv"><span>💳 Карта</span><span>📱 СБП</span><span>💵 Наличные</span><span>🎈 Шары к букету</span><span>🧸 Мягкие игрушки</span></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="band rv">
+      <img src="img/bridal.webp" alt="Свадебный букет">
+      <div class="in">
+        <div class="eyebrow" style="color:#b9d7b4">Свадьбы и события</div>
+        <h2>Букет невесты <em>под ваш образ</em></h2>
+        <p>Подберём цветы под платье и стиль свадьбы, сделаем бутоньерку и украсим зал шарами. Расскажите идею, мы предложим 2–3 варианта.</p>
+        <a class="btn btn-deep max" data-msg="Здравствуйте! Интересует свадебный букет.">Обсудить в MAX</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" style="padding-top:0">
+  <div class="wrap ct-grid">
+    <div class="ct-card rv">
+      <h2>Ждём <em>в гости</em></h2>
+      <dl>
+        <dt>Адрес</dt><dd>Казань, Чистопольская ул., 75, ЖК «Ривьера»</dd>
+        <dt>Мессенджер</dt><dd><a class="max" data-msg="Здравствуйте!">Написать в MAX</a></dd>
+        <dt>Доставка</dt><dd>по Казани, бесплатно от 5 000 ₽</dd>
+        <dt>Бонусы</dt><dd>300 на первый заказ</dd>
+      </dl>
+      <div class="cta" style="margin-top:28px">
+        <a class="btn btn-deep max" data-msg="Здравствуйте! Хочу заказать букет."><svg class="mx" viewBox="0 0 24 24"><use href="#maxi"/></svg>Написать</a>
+        <a class="btn btn-line" href="https://2gis.ru/kazan/firm/70000001039861427" target="_blank" rel="noopener">Открыть в 2GIS</a>
+      </div>
+    </div>
+    <div class="map rv" aria-label="Схема расположения">
+      <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="600" height="400" fill="#dde8d8"/>
+        <path d="M-20 330 C120 300 200 360 330 330 S520 280 640 310 L640 420 L-20 420Z" fill="#c4d9e0"/>
+        <g stroke="#fbfaf5" stroke-width="14" fill="none" stroke-linecap="round">
+          <path d="M-10 150 L610 120"/><path d="M200 -10 L230 300"/><path d="M450 -10 L420 300"/>
+        </g>
+        <g stroke="#fbfaf5" stroke-width="6" fill="none" opacity=".7">
+          <path d="M-10 230 L610 215"/><path d="M330 -10 L325 300"/><path d="M90 -10 L110 300"/>
+        </g>
+        <text x="20" y="140" font-family="Manrope" font-size="12" fill="#66736a">Чистопольская ул.</text>
+        <text x="40" y="380" font-family="Manrope" font-size="12" fill="#5d7f8a">Казанка</text>
+      </svg>
+      <div class="pin"><span>YASHEL · ЖК «Ривьера»</span><i></i></div>
+      <a class="btn btn-sm btn-deep" href="https://2gis.ru/kazan/firm/70000001039861427" target="_blank" rel="noopener">Маршрут</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">YASHEL</div>
+    <p>Это демонстрационный концепт сайта, сделанный в качестве предложения. Не является официальным сайтом магазина. Цены и ассортимент примерные; рейтинг, адрес и акции взяты из открытой карточки 2GIS. Фотографии иллюстративные, при запуске заменяются на фото букетов магазина.</p>
+    <details>
+      <summary>Авторы фотографий (Wikimedia Commons)</summary>
+      <ul id="credits"></ul>
+    </details>
+  </div>
+</footer>
+
+<a class="fab max" data-msg="Здравствуйте! Хочу заказать букет." aria-label="Написать в MAX"><svg class="mx" viewBox="0 0 24 24"><use href="#maxi"/></svg><span>MAX</span></a>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Корзина">
+  <div class="dr-h"><h3>Корзина</h3><button id="cartClose" aria-label="Закрыть" style="font-size:28px;line-height:1">×</button></div>
+  <div class="dr-list" id="cartList"></div>
+  <div class="dr-f">
+    <div class="tot"><span>Итого</span><b id="cartTotal">0 ₽</b></div>
+    <div class="free" id="cartFree"></div>
+    <input type="text" id="cartAddr" placeholder="Адрес и время доставки (необязательно)" style="margin-bottom:12px">
+    <a class="btn btn-deep" id="cartSend" href="#"><svg class="mx" viewBox="0 0 24 24"><use href="#maxi"/></svg>Отправить заказ в MAX</a>
+    <p class="hint">Текст заказа скопируется — просто вставьте его в чат</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="maxi" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".18"/><path d="M7 16.5V8l5 5 5-5v8.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<script>
+const MAX_URL='https://max.ru/u/f9LHodD0cOIV5lAHE0q_yQ6fBo6plQQ9Qh-8tjBvNNrPo1YROOlbqb-Yi90';
+const fmt=n=>n.toLocaleString('ru-RU').replace(/,/g,' ')+' ₽';
+const toastEl=document.getElementById('toast');let tt;
+function toast(t,ms){toastEl.textContent=t;toastEl.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('on'),ms||1800)}
+async function copy(t){try{await navigator.clipboard.writeText(t);return true}catch(e){
+  const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}a.remove();return ok}}
+/* MAX не умеет подставлять текст в ссылку, поэтому копируем заказ в буфер и открываем чат */
+async function sendMax(text){
+  const ok=await copy(text);
+  toast(ok?'Текст заказа скопирован — вставьте его в чат MAX':'Откроется чат MAX — опишите заказ',2800);
+  setTimeout(()=>window.open(MAX_URL,'_blank','noopener'),500);
+}
+document.querySelectorAll('.max').forEach(a=>{a.href=MAX_URL;a.addEventListener('click',e=>{e.preventDefault();sendMax(a.dataset.msg||'Здравствуйте!')})});
+
+const ITEMS=[
+ {id:1,n:'Пудровая нежность',d:'51 розовая роза, лента в тон',p:8900,img:'hero-roses',c:'roses',t:'Хит',hot:1},
+ {id:2,n:'Пионовое облако',d:'15 пионов сорта Sarah Bernhardt',p:7500,img:'peonies',c:'peonies',t:'Сезон'},
+ {id:3,n:'Весна в Вене',d:'35 разноцветных тюльпанов',p:4900,img:'tulips',c:'tulips'},
+ {id:4,n:'Солнечный день',d:'Оранжевые розы, зелень, ягоды',p:4500,img:'orange-roses',c:'roses'},
+ {id:5,n:'Love letter',d:'Тюльпаны в крафте и открытка',p:2900,img:'tulips-love',c:'tulips',t:'Новинка'},
+ {id:6,n:'Нежный сад',d:'Пионы и зелень в стекле',p:6200,img:'peonies-2',c:'peonies'},
+ {id:7,n:'Корзина весны',d:'Розовые тюльпаны в плетёной корзине',p:5400,img:'tulips-basket',c:'tulips'},
+ {id:8,n:'Белая классика',d:'25 белых роз',p:4900,img:'white-roses',c:'roses'},
+ {id:9,n:'Гортензия-винтаж',d:'Крупная гортензия, пыльные оттенки',p:3900,img:'hydrangea',c:'mix'},
+ {id:10,n:'Праздник',d:'Розы, гвоздики, эустома',p:4200,img:'roses-carnations',c:'mix'},
+ {id:11,n:'Подарок с игрушкой',d:'Сборный букет и мягкая игрушка',p:5900,img:'gift',c:'mix',t:'🧸'},
+ {id:12,n:'Букет невесты',d:'Пастельные розы, эвкалипт, ленты',p:7900,img:'bridal-2',c:'wedding'},
+ {id:13,n:'Калла и персик',d:'Каллы, персиковые розы, гортензия',p:7500,img:'calla',c:'wedding'},
+ {id:14,n:'Облако шаров',d:'15 гелиевых шаров, цвета на выбор',p:2900,img:'balloons',c:'balloons',t:'🎈'},
+ {id:15,n:'Колонна из шаров',d:'Высота около 2,5 м',p:4500,img:'balloon-column',c:'balloons'},
+ {id:16,n:'Арка из шаров',d:'Оформление входа или фотозоны',p:9900,img:'balloon-arch',c:'balloons',t:'от'}
+];
+const grid=document.getElementById('grid');
+grid.innerHTML=ITEMS.map(i=>`<article class="card rv" data-c="${i.c}">
+  <div class="ph"><img loading="lazy" src="img/${i.img}.webp" alt="${i.n}">${i.t?`<span class="tag${i.hot?' hot':''}">${i.t}</span>`:''}</div>
+  <div class="body"><h3>${i.n}</h3><p>${i.d}</p>
+  <div class="row"><span class="price">${fmt(i.p)}</span><button class="add" data-id="${i.id}" aria-label="В корзину">+</button></div></div></article>`).join('');
+document.getElementById('chips').addEventListener('click',e=>{
+  const b=e.target.closest('.chip'); if(!b)return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===b));
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f));
+});
+
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem('yashel_cart')||'[]')}catch(e){}
+const save=()=>{try{localStorage.setItem('yashel_cart',JSON.stringify(cart))}catch(e){}};
+const sumCart=()=>cart.reduce((s,c)=>s+c.q*c.p,0);
+function addToCart(item){
+  const f=cart.find(c=>c.key===item.key); f?f.q++:cart.push({...item,q:1});
+  save();render();toast('Добавлено: '+item.n);
+}
+function render(){
+  const cnt=cart.reduce((s,c)=>s+c.q,0),sum=sumCart();
+  const cc=document.getElementById('cartCount');cc.textContent=cnt;cc.classList.toggle('on',cnt>0);
+  document.getElementById('cartTotal').textContent=fmt(sum);
+  document.getElementById('cartFree').textContent=!sum?'':sum>=5000?'✓ Доставка бесплатно':'До бесплатной доставки: '+fmt(5000-sum);
+  document.getElementById('cartList').innerHTML=cart.length?cart.map((c,k)=>`<div class="ci"><img src="img/${c.img}.webp" alt=""><div><b>${c.n}</b><small>${fmt(c.p)}</small></div>
+   <div class="qty"><button data-k="${k}" data-d="-1" aria-label="Меньше">−</button>${c.q}<button data-k="${k}" data-d="1" aria-label="Больше">+</button></div></div>`).join(''):'<p class="empty">Корзина пока пуста 🌿</p>';
+}
+grid.addEventListener('click',e=>{const b=e.target.closest('.add');if(!b)return;const i=ITEMS.find(x=>x.id==b.dataset.id);addToCart({key:'i'+i.id,n:i.n,p:i.p,img:i.img})});
+document.getElementById('cartList').addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;const c=cart[b.dataset.k];c.q+=+b.dataset.d;if(c.q<1)cart.splice(b.dataset.k,1);save();render()});
+const ov=document.getElementById('ov'),dr=document.getElementById('drawer');
+const openCart=o=>{ov.classList.toggle('on',o);dr.classList.toggle('on',o)};
+document.getElementById('cartOpen').onclick=()=>openCart(true);
+document.getElementById('cartClose').onclick=ov.onclick=()=>openCart(false);
+document.getElementById('cartSend').onclick=e=>{
+  e.preventDefault();
+  if(!cart.length){toast('Сначала добавьте букет');return}
+  const addr=document.getElementById('cartAddr').value.trim();
+  const lines=cart.map(c=>`• ${c.n} × ${c.q} = ${fmt(c.p*c.q)}`);
+  sendMax('Здравствуйте! Хочу заказать:\n'+lines.join('\n')+'\nИтого: '+fmt(sumCart())+(addr?'\nДоставка: '+addr:''));
+};
+render();
+
+const FL=[{k:'r',n:'Розы',p:180,img:'hero-roses',w:'роз'},{k:'p',n:'Пионы',p:450,img:'peonies-2',w:'пионов'},{k:'t',n:'Тюльпаны',p:120,img:'tulips',w:'тюльпанов'},{k:'h',n:'Гортензии',p:900,img:'hydrangea',w:'гортензий'},{k:'w',n:'Белые розы',p:190,img:'white-roses',w:'белых роз'}];
+const WR=[{k:'k',n:'Крафт',p:0},{k:'f',n:'Фетр',p:300},{k:'b',n:'Шляпная коробка',p:1200},{k:'c',n:'Корзина',p:900}];
+const EX=[{k:'bal',n:'5 гелиевых шаров',p:900},{k:'toy',n:'Мягкая игрушка',p:1200},{k:'card',n:'Открытка',p:100}];
+const st={f:'r',w:'k',x:new Set(),n:25};
+const oF=document.getElementById('oFlower'),oW=document.getElementById('oWrap'),oX=document.getElementById('oExtra'),oC=document.getElementById('oCount'),bImg=document.getElementById('bImg');
+let bText='';
+function opts(el,arr,isOn,onClick,perUnit){
+  el.innerHTML=arr.map(o=>`<button class="opt${isOn(o)?' on':''}" data-k="${o.k}"><b>${o.n}</b><small>${o.p?(perUnit?fmt(o.p)+' / шт':'+'+fmt(o.p)):'включено'}</small></button>`).join('');
+  el.onclick=e=>{const b=e.target.closest('.opt');if(b){onClick(b.dataset.k);upd()}};
+}
+function upd(){
+  opts(oF,FL,o=>o.k===st.f,k=>st.f=k,true);
+  opts(oW,WR,o=>o.k===st.w,k=>st.w=k);
+  opts(oX,EX,o=>st.x.has(o.k),k=>st.x.has(k)?st.x.delete(k):st.x.add(k));
+  const f=FL.find(o=>o.k===st.f),w=WR.find(o=>o.k===st.w),xs=EX.filter(o=>st.x.has(o.k));
+  const total=f.p*st.n+w.p+xs.reduce((s,o)=>s+o.p,0);
+  document.getElementById('oCountV').textContent=st.n;
+  document.getElementById('bPrice').textContent=fmt(total);
+  const desc=`${st.n} ${f.w} · ${w.n.toLowerCase()}${xs.length?' · '+xs.map(o=>o.n.toLowerCase()).join(', '):''}`;
+  document.getElementById('bDesc').textContent=desc;
+  if(!bImg.src.endsWith(f.img+'.webp')){bImg.style.opacity=0;setTimeout(()=>{bImg.src='img/'+f.img+'.webp';bImg.style.opacity=1},200)}
+  const note=document.getElementById('oNote').value.trim();
+  bText=`Здравствуйте! Хочу собрать букет:\n${desc}\nЦена по сайту: ${fmt(total)}${note?'\nТекст открытки: '+note:''}`;
+}
+oC.oninput=()=>{st.n=+oC.value;upd()};
+document.getElementById('oNote').oninput=upd;
+document.getElementById('bOrder').onclick=e=>{e.preventDefault();sendMax(bText)};
+upd();
+
+const CR=[
+ ['Bouquet de roses roses.jpg','Jebulon','CC BY-SA 3.0'],
+ ['Bouquet of peonies 02.JPG','Kor!An (Андрей Корзун)','CC BY-SA 3.0'],
+ ['Bouquet of peonies 11.JPG','Kor!An (Андрей Корзун)','CC BY-SA 3.0'],
+ ['Rose bouquet, Döhren.jpg','Gerda Arendt','CC0'],
+ ['Tulip-bouquet-vienna (Unsplash).jpg','Gábor Juhász','CC0'],
+ ['Tulips from a lover (Unsplash).jpg','Brigitte Tohm','CC0'],
+ ['Beach Wedding Bouquet.jpg','Simple Maui Wedding','CC BY 2.5'],
+ ['22, Bridal bouquet (Unsplash).jpg','Alvin Mahmudov','CC0'],
+ ['Rose hydrangea calla wedding bouquet.jpg','Jina Lee','CC BY-SA 3.0'],
+ ['Hydrangea bouquet (9580026536).jpg','Ruth Hartnup','CC BY 2.0'],
+ ['A bouquet of pink tulips in a basket.jpg','George E. Koronaios','CC BY-SA 4.0'],
+ ['Rose and carnation flower bouquet 01.jpg','Suyash Dwivedi','CC BY-SA 4.0'],
+ ['Flower bouquet for a newborn in Christmas.jpg','M&A','CC BY-SA 4.0'],
+ ['Bouquet of roses in front of painting.jpg','Pittigrilli','CC BY-SA 4.0'],
+ ['Pink rose–IMG 6796 02.jpg','Kızıl','CC BY-SA 4.0'],
+ ['Balloon arch.jpg','Ishmael Orendain','CC BY 2.0'],
+ ['Organic Arch 2016 balloon decorations.jpg','Affairs in the Air Balloon Decorating','CC BY-SA 4.0'],
+ ['2008-09-27 Balloon string.jpg','Ildar Sagdejev (Specious)','CC BY-SA 4.0']
+];
+document.getElementById('credits').innerHTML=CR.map(c=>`<li><a href="https://commons.wikimedia.org/wiki/File:${encodeURIComponent(c[0].replace(/ /g,'_'))}" target="_blank" rel="noopener">${c[0]}</a> — ${c[1].replace(/&/g,'&amp;')}, ${c[2]}</li>`).join('');
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* листья вместо лепестков — «яшел» по-татарски «зелёный» */
+(()=>{
+  const cv=document.getElementById('petals'),cx=cv.getContext('2d');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  let W,H,P=[];
+  const rs=()=>{const r=cv.parentElement.getBoundingClientRect();W=cv.width=r.width*devicePixelRatio;H=cv.height=r.height*devicePixelRatio;cv.style.width=r.width+'px';cv.style.height=r.height+'px'};
+  rs();addEventListener('resize',rs);
+  const N=innerWidth<600?12:24,C=['#9cbf94','#c7dcbf','#ebb8bc'];
+  for(let i=0;i<N;i++)P.push({x:Math.random()*W,y:Math.random()*H,s:(6+Math.random()*9)*devicePixelRatio,v:.3+Math.random()*.7,a:Math.random()*6.28,w:.01+Math.random()*.02,h:C[i%3]});
+  (function f(){cx.clearRect(0,0,W,H);
+    for(const p of P){p.y+=p.v*devicePixelRatio;p.a+=p.w;p.x+=Math.sin(p.a)*.6*devicePixelRatio;if(p.y>H+20){p.y=-20;p.x=Math.random()*W}
+      cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.globalAlpha=.6;cx.fillStyle=p.h;cx.beginPath();cx.ellipse(0,0,p.s,p.s*.45,0,0,6.28);cx.fill();cx.restore()}
+    requestAnimationFrame(f)})();
+})();
+</script>
+</body>
+</html>
